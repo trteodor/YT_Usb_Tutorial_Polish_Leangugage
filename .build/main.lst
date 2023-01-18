@@ -1,0 +1,83 @@
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccevcd0v.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"main.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.main,"ax",%progbits
+  20              		.align	1
+  21              		.global	main
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	main:
+  27              	.LFB130:
+  28              		.file 1 "Application/main.c"
+   1:Application/main.c **** #include "System.h"
+   2:Application/main.c **** #include "GPIO.h"
+   3:Application/main.c **** 
+   4:Application/main.c **** int main(void) {
+  29              		.loc 1 4 16 view -0
+  30              		.cfi_startproc
+  31              		@ Volatile: function does not return.
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34 0000 08B5     		push	{r3, lr}
+  35              	.LCFI0:
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 3, -8
+  38              		.cfi_offset 14, -4
+   5:Application/main.c **** 	PLL_Config84Mhz();
+  39              		.loc 1 5 2 view .LVU1
+  40 0002 FFF7FEFF 		bl	PLL_Config84Mhz
+  41              	.LVL0:
+   6:Application/main.c ****   ConfigSysTick1ms();
+  42              		.loc 1 6 3 view .LVU2
+  43 0006 FFF7FEFF 		bl	ConfigSysTick1ms
+  44              	.LVL1:
+  45              	.L2:
+   7:Application/main.c **** 
+   8:Application/main.c ****   while(1)
+  46              		.loc 1 8 3 discriminator 1 view .LVU3
+   9:Application/main.c ****   {
+  10:Application/main.c ****     
+  11:Application/main.c **** 
+  12:Application/main.c ****   }
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccevcd0v.s 			page 2
+
+
+  47              		.loc 1 12 3 discriminator 1 view .LVU4
+   8:Application/main.c ****   {
+  48              		.loc 1 8 8 discriminator 1 view .LVU5
+  49 000a FEE7     		b	.L2
+  50              		.cfi_endproc
+  51              	.LFE130:
+  53              		.text
+  54              	.Letext0:
+  55              		.file 2 "Drivers/System/System.h"
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccevcd0v.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+C:\Users\Teodor\AppData\Local\Temp\ccevcd0v.s:20     .text.main:00000000 $t
+C:\Users\Teodor\AppData\Local\Temp\ccevcd0v.s:26     .text.main:00000000 main
+
+UNDEFINED SYMBOLS
+PLL_Config84Mhz
+ConfigSysTick1ms

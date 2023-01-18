@@ -1,5 +1,5 @@
 
-TARGET = CortexM4rtos_Vtut
+TARGET = USB_tut
 DEBUG ?= 1
 OPT = -Og
 # Build path
@@ -14,7 +14,7 @@ C_SOURCES += Drivers/System/System.c
 C_SOURCES += Drivers/RTC/RTC.c
 # ASM sources
 ASM_SOURCES += _startup_stm32f401xc.s
-ASM_SOURCES += osKernelAsm.s
+
 
 
 PREFIX = arm-none-eabi-
@@ -114,5 +114,11 @@ $(BUILD_DIR):
 clean:
 	-rm -fR $(BUILD_DIR)
   
+flash: $(all)
+	openocd \
+	-f interface/stlink.cfg -f target/stm32f4x.cfg \
+	-c "init" -c "reset halt" \
+	-c "flash write_image erase $(BUILD_DIR)/USB_tut.bin 0x8000000" \
+	-c "verify_image $(BUILD_DIR)/USB_tut.bin" -c "reset" -c "shutdown"
 
 -include $(wildcard $(BUILD_DIR)/*.d)
