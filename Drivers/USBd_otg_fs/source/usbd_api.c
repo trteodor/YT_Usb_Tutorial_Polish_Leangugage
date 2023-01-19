@@ -1,6 +1,10 @@
 #include <usb_otg_regs.h>
 #include "GPIO.h"
 
+uint32_t USB_OTG_BASE_ADDR;
+unsigned EP_MAX_COUNT;
+unsigned CHNNL_MAX_COUNT;
+
 #define USB_OTG_FS_DP_Pin GPIO_PIN_12
 #define USB_OTG_FS_DP_Port GPIOA
 #define USB_OTG_FS_DM_Pin GPIO_PIN_11
@@ -21,6 +25,8 @@ void USBD_periphInit(void)
     // FS_USB_OTG_PREGS->PCGCCTL = 0;
     // FS_USB_OTG_DREGS->DCTL = 0;
 
+
+    /*Initialize frist the USB necessary GPIO pins and NVIC*/
     SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIOAEN);
 
     GPIO_InitTypeDef GPIO_InitStruct;
@@ -34,9 +40,10 @@ void USBD_periphInit(void)
     NVIC_SetPriority(OTG_FS_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),0, 0));
     NVIC_EnableIRQ(OTG_FS_IRQn);
 
-    USE_OTG_FS_REGS();
 
-    SET_BIT(RCC->AHB2ENR, RCC_AHB2ENR_OTGFSEN);
+    USE_OTG_FS_REGS(); /*Assign correct USB periph addres to variable "USB_OTG_BASE_ADDR" */
+
+    SET_BIT(RCC->AHB2ENR, RCC_AHB2ENR_OTGFSEN); /*Enable USB OTG FS periph*/
 
     /*Core/ global regs*/
     gahbcfg.d32 = 0;

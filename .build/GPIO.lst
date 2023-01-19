@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 1
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 1
   42              		.loc 1 14 22 is_stmt 1 view .LVU7
   43              		.loc 1 14 3 is_stmt 0 view .LVU8
   44 0002 0F2B     		cmp	r3, #15
-ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 2
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s 			page 2
 
 
   45 0004 67D8     		bhi	.L11
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 1
   75 0020 22EA0C0C 		bic	ip, r2, ip
   76              	.LVL4:
   38:Drivers/GPIO/GPIO.c ****         temp |= ((GPIO_Init->Pull) << (position * 2U));
-ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 3
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s 			page 3
 
 
   77              		.loc 1 38 9 is_stmt 1 view .LVU20
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 1
  119              		.loc 1 50 12 view .LVU40
  120 0054 42EA0C02 		orr	r2, r2, ip
  121              	.LVL9:
-ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 4
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s 			page 4
 
 
   51:Drivers/GPIO/GPIO.c ****       GPIOx->MODER = temp;
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 1
  160              	.LVL14:
   25:Drivers/GPIO/GPIO.c ****         temp |= (GPIO_Init->Speed << (position * 2U));
  161              		.loc 1 25 9 is_stmt 1 view .LVU58
-ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 5
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s 			page 5
 
 
   25:Drivers/GPIO/GPIO.c ****         temp |= (GPIO_Init->Speed << (position * 2U));
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 1
  198              		.loc 1 30 14 view .LVU76
  199 00a4 2243     		orrs	r2, r2, r4
  200              	.LVL21:
-ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 6
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s 			page 6
 
 
   31:Drivers/GPIO/GPIO.c ****        }
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 1
   52:Drivers/GPIO/GPIO.c ****     }
   53:Drivers/GPIO/GPIO.c ****   }
   54:Drivers/GPIO/GPIO.c **** }
-ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 7
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s 			page 7
 
 
  239              		.loc 1 54 1 view .LVU93
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 1
  288              		.section	.text.GPIO_PinSet,"ax",%progbits
  289              		.align	1
  290              		.global	GPIO_PinSet
-ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 8
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s 			page 8
 
 
  291              		.syntax unified
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 1
  336 0004 0904     		lsls	r1, r1, #16
  337              		.loc 1 74 15 view .LVU116
  338 0006 8161     		str	r1, [r0, #24]
-ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 9
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s 			page 9
 
 
   75:Drivers/GPIO/GPIO.c **** }
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 1
  384 0020 1123     		movs	r3, #17
  385 0022 0293     		str	r3, [sp, #8]
   86:Drivers/GPIO/GPIO.c **** 	GPIO_InitStruct.Pull = GPIO_NOPULL;
-ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 10
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s 			page 10
 
 
  386              		.loc 1 86 2 is_stmt 1 view .LVU127
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 1
  434              	.L23:
  435 0010 00080240 		.word	1073874944
  436              		.cfi_endproc
-ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 11
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s 			page 11
 
 
  437              	.LFE135:
@@ -608,24 +608,24 @@ ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 1
  442              		.file 3 "d:\\gnu_tools\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\sys\\_stdi
  443              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f401xc.h"
  444              		.file 5 "Drivers/GPIO/GPIO.h"
-ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s 			page 12
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 GPIO.c
-C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s:20     .text.GPIO_Init:00000000 $t
-C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s:26     .text.GPIO_Init:00000000 GPIO_Init
-C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s:254    .text.tooglePIN:00000000 $t
-C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s:260    .text.tooglePIN:00000000 tooglePIN
-C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s:289    .text.GPIO_PinSet:00000000 $t
-C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s:295    .text.GPIO_PinSet:00000000 GPIO_PinSet
-C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s:312    .text.GPIO_PinReset:00000000 $t
-C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s:318    .text.GPIO_PinReset:00000000 GPIO_PinReset
-C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s:345    .text.Led_Cfg:00000000 $t
-C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s:351    .text.Led_Cfg:00000000 Led_Cfg
-C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s:402    .text.Led_Cfg:00000034 $d
-C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s:408    .text.toggleLed:00000000 $t
-C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s:414    .text.toggleLed:00000000 toggleLed
-C:\Users\Teodor\AppData\Local\Temp\ccw4j8II.s:435    .text.toggleLed:00000010 $d
+C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s:20     .text.GPIO_Init:00000000 $t
+C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s:26     .text.GPIO_Init:00000000 GPIO_Init
+C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s:254    .text.tooglePIN:00000000 $t
+C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s:260    .text.tooglePIN:00000000 tooglePIN
+C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s:289    .text.GPIO_PinSet:00000000 $t
+C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s:295    .text.GPIO_PinSet:00000000 GPIO_PinSet
+C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s:312    .text.GPIO_PinReset:00000000 $t
+C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s:318    .text.GPIO_PinReset:00000000 GPIO_PinReset
+C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s:345    .text.Led_Cfg:00000000 $t
+C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s:351    .text.Led_Cfg:00000000 Led_Cfg
+C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s:402    .text.Led_Cfg:00000034 $d
+C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s:408    .text.toggleLed:00000000 $t
+C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s:414    .text.toggleLed:00000000 toggleLed
+C:\Users\Teodor\AppData\Local\Temp\ccAuOUln.s:435    .text.toggleLed:00000010 $d
 
 NO UNDEFINED SYMBOLS

@@ -8,8 +8,8 @@
         {
             "name": "Cortex Debug",
             "cwd": "${workspaceRoot}",
-            "executable": "./.build_debug/CompilationOutputFiles/USB_otg_CDC_ucDLT_Wii/USB_otg_CDC_ucDLT_Wii.elf",
-            "preLaunchTask": "buildRCC_ConfigApp",
+            "executable": "./.build/USB_tut.elf",
+            "preLaunchTask": "buildUsbTut",
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "openocd",

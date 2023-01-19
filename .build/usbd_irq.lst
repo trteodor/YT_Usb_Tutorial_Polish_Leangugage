@@ -1,0 +1,95 @@
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccr9NqIt.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"usbd_irq.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.OTG_FS_IRQHandler,"ax",%progbits
+  20              		.align	1
+  21              		.global	OTG_FS_IRQHandler
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	OTG_FS_IRQHandler:
+  27              	.LFB0:
+  28              		.file 1 "Drivers/USBd_otg_fs/source/usbd_irq.c"
+   1:Drivers/USBd_otg_fs/source/usbd_irq.c **** 
+   2:Drivers/USBd_otg_fs/source/usbd_irq.c **** 
+   3:Drivers/USBd_otg_fs/source/usbd_irq.c **** 
+   4:Drivers/USBd_otg_fs/source/usbd_irq.c **** 
+   5:Drivers/USBd_otg_fs/source/usbd_irq.c **** 
+   6:Drivers/USBd_otg_fs/source/usbd_irq.c **** 
+   7:Drivers/USBd_otg_fs/source/usbd_irq.c **** 
+   8:Drivers/USBd_otg_fs/source/usbd_irq.c **** void OTG_FS_IRQHandler(void)
+   9:Drivers/USBd_otg_fs/source/usbd_irq.c **** {
+  29              		.loc 1 9 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  10:Drivers/USBd_otg_fs/source/usbd_irq.c **** //   USB_OTG_GINTSTS_TypeDef interrupt_status;
+  11:Drivers/USBd_otg_fs/source/usbd_irq.c **** 
+  12:Drivers/USBd_otg_fs/source/usbd_irq.c **** //   interrupt_status.d32 = FS_USB_OTG_GREGS->GINTSTS;
+  13:Drivers/USBd_otg_fs/source/usbd_irq.c **** //   /* Ensure that we are in the device mode. */
+  14:Drivers/USBd_otg_fs/source/usbd_irq.c **** //   if (interrupt_status.b.cmod == 0) {
+  15:Drivers/USBd_otg_fs/source/usbd_irq.c **** //     interrupt_status.d32 &= FS_USB_OTG_GREGS->GINTMSK;
+  16:Drivers/USBd_otg_fs/source/usbd_irq.c **** //     /* Clear pending interrupt flags. */
+  17:Drivers/USBd_otg_fs/source/usbd_irq.c **** //     FS_USB_OTG_GREGS->GINTSTS = interrupt_status.d32;
+  18:Drivers/USBd_otg_fs/source/usbd_irq.c **** 
+  19:Drivers/USBd_otg_fs/source/usbd_irq.c **** //     if (interrupt_status.b.usbrst)
+  20:Drivers/USBd_otg_fs/source/usbd_irq.c **** //       DevResetHandler();
+  21:Drivers/USBd_otg_fs/source/usbd_irq.c **** //     if (interrupt_status.b.enumdne)
+  22:Drivers/USBd_otg_fs/source/usbd_irq.c **** //       DevEnumerationDoneHandler();
+  23:Drivers/USBd_otg_fs/source/usbd_irq.c **** 
+  24:Drivers/USBd_otg_fs/source/usbd_irq.c **** //     if (interrupt_status.b.rxflvl)
+  25:Drivers/USBd_otg_fs/source/usbd_irq.c **** //       DevRxFifoNonEmptylHandler();
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccr9NqIt.s 			page 2
+
+
+  26:Drivers/USBd_otg_fs/source/usbd_irq.c **** //     if (interrupt_status.b.oepint)
+  27:Drivers/USBd_otg_fs/source/usbd_irq.c **** //       DevOutEndPointTransactionHandler();
+  28:Drivers/USBd_otg_fs/source/usbd_irq.c **** //     if (interrupt_status.b.iepint)
+  29:Drivers/USBd_otg_fs/source/usbd_irq.c **** //       DevInEndPointTransactionHandler();
+  30:Drivers/USBd_otg_fs/source/usbd_irq.c **** 
+  31:Drivers/USBd_otg_fs/source/usbd_irq.c **** //     if (interrupt_status.b.usbsusp)
+  32:Drivers/USBd_otg_fs/source/usbd_irq.c **** //       DevSuspendHandler();
+  33:Drivers/USBd_otg_fs/source/usbd_irq.c **** //     if (interrupt_status.b.wkuint)
+  34:Drivers/USBd_otg_fs/source/usbd_irq.c **** //       DevWakeupHandler();
+  35:Drivers/USBd_otg_fs/source/usbd_irq.c **** 
+  36:Drivers/USBd_otg_fs/source/usbd_irq.c **** //     if (interrupt_status.b.sof)
+  37:Drivers/USBd_otg_fs/source/usbd_irq.c **** //       DevSofHandler();
+  38:Drivers/USBd_otg_fs/source/usbd_irq.c **** //   }
+  39:Drivers/USBd_otg_fs/source/usbd_irq.c **** //   else {
+  40:Drivers/USBd_otg_fs/source/usbd_irq.c **** 
+  41:Drivers/USBd_otg_fs/source/usbd_irq.c **** //   }
+  42:Drivers/USBd_otg_fs/source/usbd_irq.c **** }...
+  34              		.loc 1 42 1 view .LVU1
+  35 0000 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE0:
+  39              		.text
+  40              	.Letext0:
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccr9NqIt.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 usbd_irq.c
+C:\Users\Teodor\AppData\Local\Temp\ccr9NqIt.s:20     .text.OTG_FS_IRQHandler:00000000 $t
+C:\Users\Teodor\AppData\Local\Temp\ccr9NqIt.s:26     .text.OTG_FS_IRQHandler:00000000 OTG_FS_IRQHandler
+
+NO UNDEFINED SYMBOLS

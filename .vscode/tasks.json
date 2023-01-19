@@ -4,9 +4,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "buildRCC_ConfigApp",
+            "label": "buildUsbTut",
             "type": "shell",
-            "command": "make CompileAppDebug App=USB_otg_CDC_ucDLT_Wii",
+            "command": "make flash",
             "args": [
             ],
             "group": "build",

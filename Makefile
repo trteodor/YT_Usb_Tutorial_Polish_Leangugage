@@ -12,6 +12,9 @@ C_SOURCES += Application/main.c
 C_SOURCES += Drivers/GPIO/GPIO.c
 C_SOURCES += Drivers/System/System.c
 C_SOURCES += Drivers/RTC/RTC.c
+C_SOURCES += Drivers/USBd_otg_fs/source/usbd_api.c
+C_SOURCES += Drivers/USBd_otg_fs/source/usbd_fifo.c
+C_SOURCES += Drivers/USBd_otg_fs/source/usbd_irq.c
 # ASM sources
 ASM_SOURCES += _startup_stm32f401xc.s
 
@@ -43,13 +46,13 @@ C_DEFS += -DSTM32F401xC
 # AS includes
 AS_INCLUDES = 
 # C includes
-C_INCLUDES += -I/
+C_INCLUDES := 
 C_INCLUDES += -IDrivers/CMSIS/Device/ST/STM32F4xx/Include
 C_INCLUDES += -IDrivers/CMSIS/Core/Include
 C_INCLUDES += -IDrivers/GPIO
 C_INCLUDES += -IDrivers/System
 C_INCLUDES += -IDrivers/RTC
-
+C_INCLUDES += -IDrivers/USBd_otg_fs/include
 
 
 # compile gcc flags
@@ -114,7 +117,7 @@ $(BUILD_DIR):
 clean:
 	-rm -fR $(BUILD_DIR)
   
-flash: $(all)
+flash: $(BUILD_DIR)/$(TARGET).elf $(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin
 	openocd \
 	-f interface/stlink.cfg -f target/stm32f4x.cfg \
 	-c "init" -c "reset halt" \

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccevcd0v.s 			page 1
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccaNVRfc.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -31,8 +31,12 @@ ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccevcd0v.s 			page 1
    1:Application/main.c **** #include "System.h"
    2:Application/main.c **** #include "GPIO.h"
    3:Application/main.c **** 
-   4:Application/main.c **** int main(void) {
-  29              		.loc 1 4 16 view -0
+   4:Application/main.c **** 
+   5:Application/main.c **** #include "usbd_api.h"
+   6:Application/main.c **** 
+   7:Application/main.c **** 
+   8:Application/main.c **** int main(void) {
+  29              		.loc 1 8 16 view -0
   30              		.cfi_startproc
   31              		@ Volatile: function does not return.
   32              		@ args = 0, pretend = 0, frame = 0
@@ -42,42 +46,50 @@ ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccevcd0v.s 			page 1
   36              		.cfi_def_cfa_offset 8
   37              		.cfi_offset 3, -8
   38              		.cfi_offset 14, -4
-   5:Application/main.c **** 	PLL_Config84Mhz();
-  39              		.loc 1 5 2 view .LVU1
+   9:Application/main.c **** 	PLL_Config84Mhz();
+  39              		.loc 1 9 2 view .LVU1
   40 0002 FFF7FEFF 		bl	PLL_Config84Mhz
   41              	.LVL0:
-   6:Application/main.c ****   ConfigSysTick1ms();
-  42              		.loc 1 6 3 view .LVU2
+  10:Application/main.c ****   ConfigSysTick1ms();
+  42              		.loc 1 10 3 view .LVU2
   43 0006 FFF7FEFF 		bl	ConfigSysTick1ms
   44              	.LVL1:
-  45              	.L2:
-   7:Application/main.c **** 
-   8:Application/main.c ****   while(1)
-  46              		.loc 1 8 3 discriminator 1 view .LVU3
-   9:Application/main.c ****   {
-  10:Application/main.c ****     
-  11:Application/main.c **** 
-  12:Application/main.c ****   }
-ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccevcd0v.s 			page 2
+  11:Application/main.c ****   
+  12:Application/main.c **** 
+  13:Application/main.c ****   USBD_periphInit();
+  45              		.loc 1 13 3 view .LVU3
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccaNVRfc.s 			page 2
 
 
-  47              		.loc 1 12 3 discriminator 1 view .LVU4
-   8:Application/main.c ****   {
-  48              		.loc 1 8 8 discriminator 1 view .LVU5
-  49 000a FEE7     		b	.L2
-  50              		.cfi_endproc
-  51              	.LFE130:
-  53              		.text
-  54              	.Letext0:
-  55              		.file 2 "Drivers/System/System.h"
-ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccevcd0v.s 			page 3
+  46 000a FFF7FEFF 		bl	USBD_periphInit
+  47              	.LVL2:
+  48              	.L2:
+  14:Application/main.c **** 
+  15:Application/main.c ****   while(1)
+  49              		.loc 1 15 3 discriminator 1 view .LVU4
+  16:Application/main.c ****   {
+  17:Application/main.c ****     
+  18:Application/main.c **** 
+  19:Application/main.c ****   }
+  50              		.loc 1 19 3 discriminator 1 view .LVU5
+  15:Application/main.c ****   {
+  51              		.loc 1 15 8 discriminator 1 view .LVU6
+  52 000e FEE7     		b	.L2
+  53              		.cfi_endproc
+  54              	.LFE130:
+  56              		.text
+  57              	.Letext0:
+  58              		.file 2 "Drivers/System/System.h"
+  59              		.file 3 "Drivers/USBd_otg_fs/include/usbd_api.h"
+ARM GAS  C:\Users\Teodor\AppData\Local\Temp\ccaNVRfc.s 			page 3
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-C:\Users\Teodor\AppData\Local\Temp\ccevcd0v.s:20     .text.main:00000000 $t
-C:\Users\Teodor\AppData\Local\Temp\ccevcd0v.s:26     .text.main:00000000 main
+C:\Users\Teodor\AppData\Local\Temp\ccaNVRfc.s:20     .text.main:00000000 $t
+C:\Users\Teodor\AppData\Local\Temp\ccaNVRfc.s:26     .text.main:00000000 main
 
 UNDEFINED SYMBOLS
 PLL_Config84Mhz
 ConfigSysTick1ms
+USBD_periphInit
