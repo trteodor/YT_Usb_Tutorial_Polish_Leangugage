@@ -10,7 +10,7 @@ int main(void) {
   ConfigSysTick1ms();
   
 
-  USBD_periphInit();
+  USBD_Init();
 
   while(1)
   {

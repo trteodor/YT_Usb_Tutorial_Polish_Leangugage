@@ -9,12 +9,14 @@ BUILD_DIR = .build
 ######################################
 # C sources
 C_SOURCES += Application/main.c
+C_SOURCES += Application/Usbd_ex_Cdc.c
 C_SOURCES += Drivers/GPIO/GPIO.c
 C_SOURCES += Drivers/System/System.c
 C_SOURCES += Drivers/RTC/RTC.c
 C_SOURCES += Drivers/USBd_otg_fs/source/usbd_api.c
 C_SOURCES += Drivers/USBd_otg_fs/source/usbd_fifo.c
 C_SOURCES += Drivers/USBd_otg_fs/source/usbd_irq.c
+C_SOURCES += Drivers/USBd_otg_fs/source/usbd_core.c
 # ASM sources
 ASM_SOURCES += _startup_stm32f401xc.s
 

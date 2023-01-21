@@ -770,7 +770,8 @@ typedef union { /* offset 0x0E00 */
 /*********************************************************************
 * The USB_OTG_FIFO structure defines the FIFO registers.
 *********************************************************************/
-typedef volatile uint32_t USB_OTG_FIFO[USB_OTG_DATA_FIFO_SIZE >> 2];
+typedef volatile uint32_t USB_OTG_FIFO[USB_OTG_DATA_FIFO_SIZE >> 2]; //Divide by 4 (type uint32_t/4=1024Word)
+                                                                     //4092Bytes = 1024Words
 
 
 #endif /* _USB_OTG_REGS_H */
