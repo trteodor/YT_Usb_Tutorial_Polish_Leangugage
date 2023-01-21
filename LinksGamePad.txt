@@ -1,0 +1,4 @@
+https://www.artekit.eu/stm32-usb-gamepad-interface/
+ 
+https://github.com/trteodor/BlackPill_USB_CompsiteDeviceExample_BareMetal  
+
