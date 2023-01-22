@@ -2,8 +2,9 @@
 
 **_DIRECTORY: "Application" contain provided example_**
 
-This repository contains the sources created during the USB tutorial video in Polish leanguage. The video is available at this link:
-
+This repository contains the sources created during the USB tutorial video in Polish leanguage. 
+The video is available at this link:
+https://youtu.be/730B1NHwu7o 
 
 Directory: Driver/USBd_otg_fs/* contain prepared files for usb_otg_fs device driver
 Dicrectory: applications/*/* the prepared examples have been placed...
