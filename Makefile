@@ -9,7 +9,7 @@ BUILD_DIR = .build
 ######################################
 # C sources
 C_SOURCES += Application/main.c
-C_SOURCES += Application/Usbd_ex_Cdc.c
+C_SOURCES += Application/Usbd_ex_Cdc_hid.c
 C_SOURCES += Drivers/GPIO/GPIO.c
 C_SOURCES += Drivers/System/System.c
 C_SOURCES += Drivers/RTC/RTC.c

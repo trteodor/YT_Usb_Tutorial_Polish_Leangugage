@@ -80,7 +80,7 @@ typedef struct {
   usb_endpoint_descriptor_t            ep1out_descr;
   usb_endpoint_descriptor_t            ep1in_descr;
   /*HID SECTION*/
-#ifdef USE_HID_DEVICE
+#ifdef USE_HID_DEVICE /*Budujac urzadzenie kompozytowe nalezy dodac opis urzadzenia*/
   usb_interface_descriptor_t           hid_if_descr;
   usb_hid_main_descriptor_t            hid_descr;
   usb_endpoint_descriptor_t            hid_ep_descr;
@@ -99,7 +99,8 @@ static usb_com__hid_configuration_t const com_configuration = {
     sizeof(usb_configuration_descriptor_t),   /* bLength */
     CONFIGURATION_DESCRIPTOR,                 /* bDescriptorType */
     (sizeof(usb_com__hid_configuration_t)),        /* wTotalLength */
-    2,                                        /* bNumInterfaces */
+    2,                                        /* bNumInterfaces */ /*Interfejsu sa dwa!!!, jeden dla CDC drugi dla HID
+                                                  Mamy urzadzenie kompzytowe, wiec dwa interfejsy :)  dlatego tutaj zmienilismy*/
     1,                                        /* bConfigurationValue */
     0,                                        /* iConfiguration */
     USB_BM_ATTRIBUTES,                        /* bmAttributes */
@@ -147,8 +148,8 @@ static usb_com__hid_configuration_t const com_configuration = {
     ENDPOINT_DESCRIPTOR,               /* bDescriptorType */
     ENDP2 | ENDP_IN,                   /* bEndpointAddress */
     INTERRUPT_TRANSFER,                /* bmAttributes */
-    (INT_BUFF_SIZE),            /* wMaxPacketSize */
-    10                                  /* bInterval */
+    (INT_BUFF_SIZE),                   /* wMaxPacketSize */
+    10                                 /* bInterval */
   },
   {
     sizeof(usb_endpoint_descriptor_t), /* bLength */
@@ -167,7 +168,8 @@ static usb_com__hid_configuration_t const com_configuration = {
     0                                  /* bInterval */
   } //**************************************
 
-  #ifdef USE_HID_DEVICE
+  #ifdef USE_HID_DEVICE /*Do smaodzielnej nauki na temat HID, ale tutaj sa specyficzne desykpotry
+  Zauwazmy ze sekcja ta zaczyna sie deks. intefejsu.. bo mamy urzadzenie kompozytowe wiec nastepny interfejs..*/
   ,{
     sizeof(usb_interface_descriptor_t),         /* bLength */
     INTERFACE_DESCRIPTOR,                       /* bDescriptorType */
@@ -198,7 +200,7 @@ static usb_com__hid_configuration_t const com_configuration = {
   }
   #endif
 };
-
+/*Tutaj napiski to nie wnikam za wiele..*/
 static usb_string_descriptor_t(1) const string_lang = {
   sizeof(usb_string_descriptor_t(1)),
   STRING_DESCRIPTOR,
@@ -360,14 +362,14 @@ usb_result_t GetDescriptor(uint16_t wValue, uint16_t wIndex,
       }
       /*HID*/
     case HID_MAIN_DESCRIPTOR: /* Requested when boot up. */
-      if (index == 0 && wIndex == 1) {
+      if (index == 0 && wIndex == 1) { /*Interfejs numer 1 to intefejs hidowy, 0 dla CDC, nr1. dla HID.. (pole wIndex, patrz spec. klass..)*/
         *data = (uint8_t const *)&com_configuration.hid_descr;
         *length = sizeof(com_configuration.hid_descr);
         return REQUEST_SUCCESS;
       }
       return REQUEST_ERROR;
     case HID_REPORT_DESCRIPTOR:
-      if (index == 0 && wIndex == 1) { /*Interfejs numer 1 to intefejs hidowy */
+      if (index == 0 && wIndex == 1) { /*Interfejs numer 1 to intefejs hidowy, 0 dla CDC, nr1. dla HID.. */
         *data = usb_hid_report_descriptor;
         *length = sizeof(usb_hid_report_descriptor);
         return REQUEST_SUCCESS;
@@ -434,7 +436,7 @@ usb_result_t ClassNoDataSetup(usb_setup_packet_t const *setup) {
                                 CLASS_REQUEST |
                                 INTERFACE_RECIPIENT)) {
       if (setup->bRequest == SET_IDLE &&
-          setup->wIndex == 0 &&
+          setup->wIndex == 1 && /*Wybierzmy poprawny interfejs.. dla HID (wIndex)*/
           setup->wLength == 0 &&
           (setup->wValue & 0xff) == 0 /* report ID == 0 */) {
         if (setup->wValue & 0xff00)
@@ -444,7 +446,7 @@ usb_result_t ClassNoDataSetup(usb_setup_packet_t const *setup) {
         return REQUEST_SUCCESS;
       }
       else if (setup->bRequest == SET_PROTOCOL &&
-              setup->wIndex == 0 &&
+              setup->wIndex == 1 && /*Wybierzmy poprawny interfejs.. dla HID (wIndex)*/
               setup->wLength == 0) {
         protocol = setup->wValue;
         return REQUEST_SUCCESS;
@@ -510,7 +512,11 @@ usb_result_t ClassInDataSetup(usb_setup_packet_t const *setup,
   if (setup->bmRequestType == (DEVICE_TO_HOST |
                                CLASS_REQUEST |
                                INTERFACE_RECIPIENT) &&
-      setup->bRequest == GET_LINE_CODING &&
+      setup->bRequest == GET_LINE_CODING && 
+        /* ^^^^^^ Powyzej - Zoldanie specyficzne dla klasy (czyli zadanie nie standardowe, tylko specyficzne dla klass..,
+         i tutaj definiowany jest ten typ rzadania)
+         Host wie co to za klasa na podstawie deskryptorow intefejsu..... 
+         patrz dokumentacji klasy np. CDC*/
       setup->wValue == 0 &&
       setup->wIndex == 0) {
     *data = (const uint8_t *)&rs232coding;
@@ -524,7 +530,12 @@ usb_result_t ClassInDataSetup(usb_setup_packet_t const *setup,
                                CLASS_REQUEST |
                                INTERFACE_RECIPIENT)) {
     if (setup->bRequest == GET_REPORT &&
-        setup->wIndex == 0 &&
+        /* ^^^^^^ Powyzej - Zoldanie specyficzne dla klasy (czyli zadanie nie standardowe, tylko specyficzne dla klass..,
+         i tutaj definiowany jest ten typ rzadania)
+         Host wie co to za klasa na podstawie deskryptorow... */
+        setup->wIndex == 1 && /*Numer interfejsu (mamy dwa nr 1. przypisalismy hidowi a 0 tj. CDC 
+        ... jest to opisane w dokumentacji klasy tez..)
+        patrz tez deskryptory*/
         setup->wValue == 0x0100 /* input report, report ID == 0 */) {
       *data = (uint8_t const *)&report;
       *length = sizeof(report);
@@ -532,7 +543,7 @@ usb_result_t ClassInDataSetup(usb_setup_packet_t const *setup,
     }
     else if (setup->bRequest == GET_PROTOCOL &&
              setup->wValue == 0 &&
-             setup->wIndex == 0 &&
+             setup->wIndex == 1 &&
              setup->wLength == 1) {
       *data = &protocol;
       *length = 1;
@@ -572,14 +583,14 @@ void ClassStatusIn(usb_setup_packet_t const *setup) {
   if (setup->bmRequestType == (HOST_TO_DEVICE |
                                CLASS_REQUEST |
                                INTERFACE_RECIPIENT) &&
-      setup->bRequest == SET_LINE_CODING &&
+      setup->bRequest == SET_LINE_CODING && /*Zadanie specyficzne dla klasy, co okreslilo tez pole bmRequestType*/
       setup->wValue == 0 &&
-      setup->wIndex == 0 &&
+      setup->wIndex == 0 && /*Wiadomo juz nr. intefejsu*/
       setup->wLength == sizeof(rs232coding)) {
   }
 }
 
-/*Wiadomo*/
+/*Patrz dokumentacja docs/USB/CDC1.2_WMC1.1/usbcdc12/PSTN120.pdf .. o co chodzi z ta notyfikacja strona chyba 41*/
 void EP2IN() {
   if (ep2queue > 0)
     --ep2queue;
@@ -591,7 +602,8 @@ static uint8_t const help[] =
   " Hello Crazy World! \n\r"
   "";
 
-
+/*Host cyklicznie pyta nas o dane na ENDP1 (patrz teoria - "
+    The host will schedule bulk transfers after the other transfer types have been allocated")*/
 /*Wiadomo wolane jak EP1OUT skonczyl odbierac dane*/
 void EP1OUT() {
   uint8_t buffer[BLK_BUFF_SIZE];

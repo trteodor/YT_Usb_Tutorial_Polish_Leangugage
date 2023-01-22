@@ -9,6 +9,8 @@ https://youtu.be/730B1NHwu7o
 Directory: Driver/USBd_otg_fs/* contain prepared files for usb_otg_fs device driver
 Dicrectory: applications/*/* the prepared examples have been placed...
 
+To check changes history please call: "gitk&" in this project at him location to see changes in diffrent implementation states
+
 This project was created only for educational purposes.
 Created software is prepared for Board- BlackPill with STM32F401CCU6:
 
@@ -30,7 +32,7 @@ To clone this repo please use following command:
 
 Finally:
 
- **_Call "make" in this project at him location compile provided example
+ **_Call "make" in this project at him location to compile provided example
 
 You can call "make flash" to program MCU.
 # General References:
