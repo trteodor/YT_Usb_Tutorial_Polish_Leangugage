@@ -1,0 +1,13 @@
+Info Od. Piotr. Cz.
+
+Trochę pogrzebałem w wolnej chwili i już chyba wiem, dlaczego zrobiłeś tak a nie inaczej 
+(jeśli się mylę to naprostuj). 
+Przeanalizowałem Twoje deskryptory i w samym CDC miałeś zrobione dwa interfejsy 
+zgodnie z dokumentacją USB. Ale już w urządzeniu kompozytowym CDC + HID przerobiłeś 
+to na jeden interfejs z 3 endpointami. Podejrzewam że nie chciało Ci działać jako dwa 
+interfejsy CDC + CDC Data. Problem wynikał prawdopodobnie z tego, że masz nieprawidłowy 
+deskryptor urządzenia. Tam masz klasę ustawioną jako 0x00. A dla urządzeń kompozytowych 
+typu CDC + HID należy użyć w device descriptor klasy 
+Miscellaneous (0xEF) i Interface Association Descriptor (podklasy 0x02 i protokołu 0x01). 
+Wtedy powinno zadziałać zgodnie ze specyfikacją USB czyli dwa interfejsy CDC i CDC_DATA 
+oraz jeden interfejs HID.
